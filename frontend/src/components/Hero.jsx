@@ -40,8 +40,13 @@ export default function Hero({ data }) {
             <p className="font-mono text-[11px] text-neutral-500 uppercase tracking-widest mb-3">
               — Currently
             </p>
-            <p className="text-lg md:text-xl text-neutral-800 leading-snug">
-              {p.currentRole}
+            <p className="text-xl md:text-2xl font-semibold tracking-tight text-neutral-950 leading-snug">
+              Associate Software Developer
+            </p>
+            <p className="mt-1 text-[15px] text-neutral-600">
+              <span className="font-medium text-neutral-800">Zenyus.ai</span>
+              <span className="mx-2 text-neutral-400">·</span>
+              <span className="font-serif-display italic text-neutral-700">Salesforce Consulting Partner</span>
             </p>
           </div>
 

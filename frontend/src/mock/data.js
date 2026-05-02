@@ -7,8 +7,8 @@ export const portfolioData = {
     firstName: "Yashraj",
     lastName: "Chauhan",
     title: "Associate Software Developer",
-    tagline: "Frontend engineer crafting scalable, performant interfaces with React, TypeScript & modern web tooling.",
-    currentRole: "Associate Software Developer Intern @ Zenyus.ai",
+    tagline: "Salesforce developer + frontend engineer crafting enterprise-grade apps, automations and integrations across the Salesforce ecosystem.",
+    currentRole: "Associate Software Developer @ Zenyus.ai · Salesforce",
     location: "Jaipur, Rajasthan, India",
     email: "yashrajsinghchauhan03@gmail.com",
     phone: "+91 76655 55027",
@@ -22,7 +22,7 @@ export const portfolioData = {
     summary:
       "I'm a Computer Science engineer with 1+ years of hands-on experience building production-grade frontend systems. My focus is on React, TypeScript, and Tailwind CSS — writing maintainable, performant UI that scales with real products.",
     paragraphs: [
-      "I'm currently an Associate Software Developer Intern at Zenyus.ai — a Salesforce-focused consultancy — where I work across enterprise-grade interfaces and integrations. Before this, I shipped a production hotel booking platform at Ezulix and trained ML/GenAI models at Evoxify using PyTorch on Azure.",
+      "I'm currently an Associate Software Developer at Zenyus.ai — a Salesforce Consulting Partner — where I build enterprise apps, automations and integrations on the Salesforce platform (LWC, Apex, Sales Cloud & Service Cloud). Before this, I shipped a production hotel booking platform at Ezulix and trained ML / GenAI models at Evoxify using PyTorch on Azure.",
       "I care about details: clean motion, typography, micro-interactions, and code that the next engineer actually wants to read. Outside work, I experiment with GSAP animations, 3D on the web, and the occasional side project."
     ],
     highlights: [
@@ -66,21 +66,23 @@ export const portfolioData = {
     {
       id: "exp-zenyus",
       company: "Zenyus.ai",
-      role: "Associate Software Developer Intern",
-      type: "Salesforce Consultancy",
+      role: "Associate Software Developer",
+      type: "Salesforce Consulting Partner",
       location: "Remote / India",
       start: "2026",
       end: "Present",
       current: true,
       description:
-        "Working on Salesforce-centric enterprise solutions — building UI components, integrations, and automation across the Salesforce ecosystem.",
+        "Building Salesforce-centric enterprise solutions — designing custom applications, automations, and integrations across Sales Cloud, Service Cloud, and Experience Cloud for global B2B clients.",
       bullets: [
-        "Developing Lightning Web Components and React-based admin consoles.",
-        "Integrating Salesforce APIs with internal tooling and client workflows.",
-        "Collaborating with senior consultants on enterprise delivery sprints.",
-        "Writing reusable TypeScript modules for multi-tenant client setups."
+        "Developing Lightning Web Components (LWC) and Aura components for client-facing admin consoles and customer portals.",
+        "Writing Apex classes, triggers and test coverage (>85%) for business-critical Salesforce automations.",
+        "Building custom REST integrations between Salesforce and third-party systems using Named Credentials and OAuth flows.",
+        "Configuring Salesforce Flows, Process Builder and Validation Rules to replace manual ops with declarative automation.",
+        "Crafting performant SOQL / SOSL queries and Lightning Data Service bindings for high-traffic record views.",
+        "Collaborating with solution architects on multi-tenant deployments via Salesforce DX and GitHub Actions CI/CD."
       ],
-      stack: ["Salesforce", "LWC", "React", "TypeScript", "REST APIs"]
+      stack: ["Salesforce", "Apex", "LWC", "SOQL", "Sales Cloud", "Service Cloud", "REST APIs", "Git"]
     },
     {
       id: "exp-ezulix",

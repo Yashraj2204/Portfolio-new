@@ -8,14 +8,31 @@ export default function Header({ data, activeSection }) {
   return (
     <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#fafaf9]/75 border-b border-neutral-200/70">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2 group">
-          <div className="w-7 h-7 bg-neutral-950 text-[#fafaf9] grid place-items-center font-mono text-[11px] font-semibold">
-            YC
+        <a href="#top" className="flex items-center gap-3 group">
+          <div className="relative w-9 h-9 flex items-center justify-center">
+            {/* Rotating ring */}
+            <svg
+              className="absolute inset-0 w-full h-full text-neutral-950 transition-transform duration-700 group-hover:rotate-[135deg]"
+              viewBox="0 0 36 36"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.2"
+            >
+              <path d="M18 2 L34 18 L18 34 L2 18 Z" />
+            </svg>
+            {/* Serif italic monogram */}
+            <span className="relative font-serif-display italic text-[22px] leading-none text-neutral-950 translate-y-[-1px]">
+              y
+            </span>
+            {/* Live indicator */}
+            <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-dot ring-2 ring-[#fafaf9]" />
           </div>
           <div className="hidden sm:flex flex-col leading-tight">
-            <span className="text-[13px] font-medium tracking-tight">{data.profile.firstName} Chauhan</span>
-            <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
-              {data.profile.title}
+            <span className="text-[14px] font-semibold tracking-tight text-neutral-950">
+              Yashraj <span className="font-serif-display italic font-normal text-neutral-500">Singh</span> Chauhan
+            </span>
+            <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.18em]">
+              Salesforce · Frontend
             </span>
           </div>
         </a>
