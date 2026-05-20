@@ -4,6 +4,31 @@
   color: #0a0a0a;
 }
 
+/* Prevent horizontal overscroll/white edges */
+html,
+body {
+  min-height: 100%;
+  background-color: #fafaf9;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
+
+html.dark-mode,
+body.dark-mode {
+  background-color: #0a0a0a;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #0a0a0a;
+  color: #fafaf9;
+}
+
+.dark-mode .App {
+  background-color: #0a0a0a;
+  color: #fafaf9;
+}
+
 /* Grain overlay utility */
 .grain::before {
   content: "";
@@ -15,15 +40,30 @@
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
+.dark-mode .grain::before {
+  opacity: 0.06;
+}
+
 /* Custom selection */
 ::selection {
   background: #0a0a0a;
   color: #fafaf9;
 }
 
+.dark-mode ::selection {
+  background: #fafaf9;
+  color: #0a0a0a;
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 84px; /* fixed header offset */
+}
+
+/* Ensure anchored sections don't hide under header */
+section[id] {
+  scroll-margin-top: 84px;
 }
 
 /* Hide scrollbar for chrome cleanness, but keep functionality */
@@ -39,6 +79,19 @@ body::-webkit-scrollbar-thumb {
 }
 body::-webkit-scrollbar-thumb:hover {
   background: #0a0a0a;
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 0;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #fafaf9;
 }
 
 /* Marquee animation */
@@ -79,4 +132,35 @@ body::-webkit-scrollbar-thumb:hover {
 .link-sweep:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+/* Dark Mode Component Overrides */
+.dark-mode button:not([class*="bg-"]) {
+  color: #fafaf9;
+}
+
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+  background-color: #1a1a1a;
+  color: #fafaf9;
+  border-color: #404040;
+}
+
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+  color: #808080;
+}
+
+:where(.dark-mode) a {
+  color: inherit;
+}
+
+/* Border colors in dark mode */
+.dark-mode [class*="border-neutral-"] {
+  border-color: #404040;
+}
+
+.dark-mode [class*="border-zinc-"] {
+  border-color: #404040;
 }

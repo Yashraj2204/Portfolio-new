@@ -1,40 +1,80 @@
-import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { Menu, X, Lamp } from "lucide-react";
+import gsap from "gsap";
 
-export default function Header({ data, activeSection }) {
+export default function Header({ data, activeSection, isDarkMode, onToggleDarkMode }) {
   const [open, setOpen] = useState(false);
   const nav = data.navigation;
+  const logoRef = useRef(null);
+
+  useEffect(() => {
+    if (!logoRef.current) return;
+
+    const logo = logoRef.current;
+
+    logo.addEventListener("mouseenter", () => {
+      const logoText = logo.querySelector(".logo-text");
+      if (logoText) {
+        gsap.to(logoText, {
+          letterSpacing: "0.05em",
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      }
+    });
+
+    logo.addEventListener("mouseleave", () => {
+      const logoText = logo.querySelector(".logo-text");
+      if (logoText) {
+        gsap.to(logoText, {
+          letterSpacing: "0em",
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      }
+    });
+  }, []);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#fafaf9]/75 border-b border-neutral-200/70">
+    <header className={`fixed top-0 inset-x-0 z-50 backdrop-blur-md transition-colors duration-500 ${
+      isDarkMode 
+        ? "bg-neutral-950/75 border-b border-neutral-800/70" 
+        : "bg-[#fafaf9]/75 border-b border-neutral-200/70"
+    }`}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-3 group">
-          <div className="relative w-9 h-9 flex items-center justify-center">
-            {/* Rotating ring */}
-            <svg
-              className="absolute inset-0 w-full h-full text-neutral-950 transition-transform duration-700 group-hover:rotate-[135deg]"
-              viewBox="0 0 36 36"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.2"
-            >
-              <path d="M18 2 L34 18 L18 34 L2 18 Z" />
-            </svg>
-            {/* Serif italic monogram */}
-            <span className="relative font-serif-display italic text-[22px] leading-none text-neutral-950 translate-y-[-1px]">
-              y
-            </span>
-            {/* Live indicator */}
-            <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-dot ring-2 ring-[#fafaf9]" />
-          </div>
-          <div className="hidden sm:flex flex-col leading-tight">
-            <span className="text-[14px] font-semibold tracking-tight text-neutral-950">
-              Yashraj <span className="font-serif-display italic font-normal text-neutral-500">Singh</span> Chauhan
-            </span>
-            <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.18em]">
-              Salesforce · Frontend
-            </span>
-          </div>
+        <a ref={logoRef} href="#top" className="flex items-center gap-3 group cursor-pointer">
+          {isDarkMode ? (
+            <>
+              <img
+                src="/Yashraj.png"
+                alt="Yashraj Singh Chauhan"
+                className="h-11 md:h-12 w-auto max-w-[320px] object-contain transition-all duration-300 group-hover:opacity-75 filter brightness-0 invert"
+                loading="eager"
+                decoding="async"
+              />
+              <div className="hidden sm:flex flex-col leading-tight logo-text">
+                <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-[0.18em] transition-colors duration-300 group-hover:text-emerald-400">
+                  Salesforce · Frontend
+                </span>
+              </div>
+            </>
+          ) : (
+            <>
+              <img
+                src="/Yashraj.png"
+                alt="Yashraj Singh Chauhan"
+                className="h-11 md:h-12 w-auto max-w-[320px] object-contain transition-opacity duration-300 group-hover:opacity-90"
+                loading="eager"
+                decoding="async"
+              />
+
+              <div className="hidden sm:flex flex-col leading-tight logo-text">
+                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.18em] transition-colors duration-300 group-hover:text-emerald-600">
+                  Salesforce · Frontend
+                </span>
+              </div>
+            </>
+          )}
         </a>
 
         <nav className="hidden md:flex items-center gap-1">
@@ -46,10 +86,26 @@ export default function Header({ data, activeSection }) {
                 key={item.href}
                 href={item.href}
                 className={`group px-3 py-2 text-[13px] font-medium flex items-center gap-2 transition-colors ${
-                  active ? "text-neutral-950" : "text-neutral-500 hover:text-neutral-950"
+                  active
+                    ? isDarkMode
+                      ? "text-neutral-400"
+                      : "text-neutral-950"
+                    : isDarkMode
+                      ? "text-neutral-400 hover:text-neutral-50"
+                      : "text-neutral-500 hover:text-neutral-950"
                 }`}
               >
-                <span className="font-mono text-[10px] text-neutral-400 group-hover:text-neutral-950 transition-colors">
+                <span
+                  className={`font-mono text-[10px] transition-colors ${
+                    active
+                      ? isDarkMode
+                        ? "text-neutral-600"
+                        : "text-neutral-400"
+                      : isDarkMode
+                        ? "text-neutral-600 group-hover:text-neutral-400"
+                        : "text-neutral-400 group-hover:text-neutral-950"
+                  }`}
+                >
                   {item.num}
                 </span>
                 <span>{item.label}</span>
@@ -63,6 +119,18 @@ export default function Header({ data, activeSection }) {
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-dot"></span>
             <span className="uppercase tracking-widest">Available</span>
           </div>
+          <button
+            onClick={onToggleDarkMode}
+            className={`p-2 rounded-lg transition-all duration-300 ${
+              isDarkMode
+                ? "bg-neutral-800 text-yellow-400 hover:bg-neutral-700"
+                : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+            }`}
+            aria-label="Toggle dark mode"
+            title="Toggle night/day mode"
+          >
+            <Lamp className="w-5 h-5" />
+          </button>
           <a
             href={`mailto:${data.profile.email}`}
             className="text-[13px] font-medium px-4 py-2 bg-neutral-950 text-[#fafaf9] hover:bg-neutral-800 transition-colors"
@@ -71,17 +139,35 @@ export default function Header({ data, activeSection }) {
           </a>
         </div>
 
-        <button
-          className="md:hidden p-2"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        <div className="flex md:hidden items-center gap-2">
+          <button
+            onClick={onToggleDarkMode}
+            className={`p-2 rounded-lg transition-all duration-300 ${
+              isDarkMode
+                ? "bg-neutral-800 text-yellow-400 hover:bg-neutral-700"
+                : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+            }`}
+            aria-label="Toggle dark mode"
+            title="Toggle night/day mode"
+          >
+            <Lamp className="w-5 h-5" />
+          </button>
+          <button
+            className="md:hidden p-2"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-neutral-200 bg-[#fafaf9]">
+        <div className={`md:hidden border-t transition-colors duration-300 ${
+          isDarkMode 
+            ? "border-neutral-800 bg-neutral-950" 
+            : "border-neutral-200 bg-[#fafaf9]"
+        }`}>
           <nav className="flex flex-col px-6 py-4 gap-1">
             {nav.map((item) => (
               <a

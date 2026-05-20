@@ -13,23 +13,23 @@ export const portfolioData = {
     email: "yashrajsinghchauhan03@gmail.com",
     phone: "+91 76655 55027",
     linkedin: "https://linkedin.com/in/yashraj-chauhan-",
-    github: "https://github.com/miikkuu",
+    github: "https://github.com/Yashraj2204",
     yearsExperience: "1+",
     availability: "Open to opportunities"
   },
 
   about: {
     summary:
-      "I'm a Computer Science engineer with 1+ years of hands-on experience building production-grade frontend systems. My focus is on React, TypeScript, and Tailwind CSS — writing maintainable, performant UI that scales with real products.",
+      "Hey! I'm a developer building smart Salesforce tools with Apex, LWC, and Agentforce — saving people hours of boring manual work. Let's build something useful and actually have fun doing it.",
     paragraphs: [
-      "I'm currently an Associate Software Developer at Zenyus.ai — a Salesforce Consulting Partner — where I build enterprise apps, automations and integrations on the Salesforce platform (LWC, Apex, Sales Cloud & Service Cloud). Before this, I shipped a production hotel booking platform at Ezulix and trained ML / GenAI models at Evoxify using PyTorch on Azure.",
-      "I care about details: clean motion, typography, micro-interactions, and code that the next engineer actually wants to read. Outside work, I experiment with GSAP animations, 3D on the web, and the occasional side project."
+      "I'm currently an Associate Software Developer at Zenyus.ai — a Salesforce Consulting Partner — where I build enterprise apps, automations and integrations on the Salesforce platform (LWC, Apex, Sales Cloud & Service Cloud). Before this, I shipped a production hotel booking platform at Ezulix.",
+      "I care about details, clean motion, typography, micro-interactions, and code that the next engineer actually wants to read. Outside work, I experiment with GSAP animations, 3D on the web, and the occasional side project."
     ],
     highlights: [
       { label: "Experience", value: "1+ yrs" },
-      { label: "Projects Shipped", value: "8+" },
+      { label: "Projects Shipped", value: "2+" },
       { label: "Based in", value: "Jaipur, IN" },
-      { label: "Focus", value: "Frontend / UI" }
+      { label: "Focus", value: "Frontend / Salesforce Platform Development" }
     ]
   },
 
@@ -68,8 +68,8 @@ export const portfolioData = {
       company: "Zenyus.ai",
       role: "Associate Software Developer",
       type: "Salesforce Consulting Partner",
-      location: "Remote / India",
-      start: "2026",
+      location: "Remote / Australia",
+      start: "05-2026",
       end: "Present",
       current: true,
       description:
@@ -88,10 +88,10 @@ export const portfolioData = {
       id: "exp-ezulix",
       company: "Ezulix Software Pvt Ltd",
       role: "Full Stack Developer (Intern)",
-      type: "SaaS / Travel Tech",
+      type: "Web / App Development",
       location: "Jaipur, India",
-      start: "2025",
-      end: "2026",
+      start: "01-2026",
+      end: "05-2026",
       current: false,
       description:
         "Built and shipped the production frontend for a full-stack hotel booking platform with user, host, and admin workflows.",
@@ -101,27 +101,27 @@ export const portfolioData = {
         "Integrated REST APIs, payment gateways, and payout flows end-to-end.",
         "Built real-time chat between user and host, and OAuth sign-in (Google, Facebook)."
       ],
-      stack: ["React", "TypeScript", "Tailwind CSS", "GSAP", "Postman"]
+      stack: ["React", "TypeScript", "Tailwind CSS", "GSAP", "Postman","HTML","Git","OAuth"]
     },
-    {
-      id: "exp-evoxify",
-      company: "Evoxify LLP",
-      role: "Generative AI Intern",
-      type: "AI / ML",
-      location: "Jaipur, India",
-      start: "Mar 2025",
-      end: "Sep 2025",
-      current: false,
-      description:
-        "Trained and deployed ML/GenAI workflows for client projects using PyTorch and Azure Cloud.",
-      bullets: [
-        "Worked with PyTorch and tensor-based model pipelines.",
-        "Wrote production-level Python for data preprocessing and inference.",
-        "Deployed workloads on Azure Cloud for client environments.",
-        "Mentored by senior engineers on MLOps best practices."
-      ],
-      stack: ["Python", "PyTorch", "Azure", "GenAI"]
-    }
+    // {
+    //   id: "exp-evoxify",
+    //   company: "Evoxify LLP",
+    //   role: "Generative AI Intern",
+    //   type: "AI / ML",
+    //   location: "Jaipur, India",
+    //   start: "Mar 2025",
+    //   end: "Sep 2025",
+    //   current: false,
+    //   description:
+    //     "Trained and deployed ML/GenAI workflows for client projects using PyTorch and Azure Cloud.",
+    //   bullets: [
+    //     "Worked with PyTorch and tensor-based model pipelines.",
+    //     "Wrote production-level Python for data preprocessing and inference.",
+    //     "Deployed workloads on Azure Cloud for client environments.",
+    //     "Mentored by senior engineers on MLOps best practices."
+    //   ],
+    //   stack: ["Python", "PyTorch", "Azure", "GenAI"]
+    // }
   ],
 
   projects: [
@@ -129,6 +129,7 @@ export const portfolioData = {
       id: "proj-spotstays",
       name: "Spot Stays",
       subtitle: "Production Hotel Booking Platform",
+      image: "/SpotStay.jpeg",
       year: "2025",
       role: "Frontend Engineer",
       description:
@@ -140,35 +141,17 @@ export const portfolioData = {
         "Google & Facebook OAuth"
       ],
       stack: ["TypeScript", "React", "Tailwind CSS", "Postman"],
-      link: null,
+      link: "https://spotstays.ezulix.co/#/",
       github: null,
       featured: true
     },
     {
       id: "proj-portfolio",
-      name: "Personal Portfolio v1",
-      subtitle: "Animated Developer Portfolio",
-      year: "2025",
-      role: "Designer + Developer",
-      description:
-        "My first personal portfolio — fully responsive, animation-rich, and built to showcase all prior mini-projects under one roof.",
-      features: [
-        "GSAP-driven scroll animations",
-        "Responsive grid across breakpoints",
-        "Integrated project showcase",
-        "Deployed on Vercel"
-      ],
-      stack: ["React", "Tailwind CSS", "GSAP", "HTML", "CSS"],
-      link: "https://yashrajsinghchauhan.vercel.app/",
-      github: "https://github.com/miikkuu",
-      featured: true
-    },
-    {
-      id: "proj-gsap",
       name: "GSAP Motion Demo",
       subtitle: "Interactive Animation Showcase",
+      image: "/car.jpeg",
       year: "2025",
-      role: "Frontend Engineer",
+      role: "Designer + Developer",
       description:
         "A GSAP-first experimental site built to push interactive motion and scroll storytelling on the web.",
       features: [
@@ -177,30 +160,49 @@ export const portfolioData = {
         "Custom cursor states",
         "Fully responsive"
       ],
-      stack: ["React", "Tailwind CSS", "GSAP"],
-      link: null,
-      github: "https://github.com/miikkuu",
-      featured: false
+      stack: ["React", "Tailwind CSS", "GSAP", "HTML", "CSS"],
+      link: "https://alphaysc.vercel.app/",
+      github: "https://github.com/Yashraj2204",
+      featured: true
     },
-    {
-      id: "proj-3d",
-      name: "3D Landing Experiment",
-      subtitle: "WebGL + GSAP Landing Page",
-      year: "2024",
-      role: "Frontend Engineer",
-      description:
-        "An experimental 3D-infused landing page blending WebGL scenes with traditional DOM content and scroll-synced animation.",
-      features: [
-        "WebGL hero scene",
-        "Scroll-locked camera motion",
-        "GPU-optimized shaders",
-        "Fallback for low-end devices"
-      ],
-      stack: ["React", "Three.js", "GSAP"],
-      link: null,
-      github: "https://github.com/miikkuu",
-      featured: false
-    }
+    // {
+    //   id: "proj-gsap",
+    //   name: "GSAP Motion Demo",
+    //   subtitle: "Interactive Animation Showcase",
+    //   year: "2025",
+    //   role: "Frontend Engineer",
+    //   description:
+    //     "A GSAP-first experimental site built to push interactive motion and scroll storytelling on the web.",
+    //   features: [
+    //     "ScrollTrigger timelines",
+    //     "Canvas + DOM interplay",
+    //     "Custom cursor states",
+    //     "Fully responsive"
+    //   ],
+    //   stack: ["React", "Tailwind CSS", "GSAP"],
+    //   link: null,
+    //   github: "https://github.com/miikkuu",
+    //   featured: false
+    // },
+    // {
+    //   id: "proj-3d",
+    //   name: "3D Landing Experiment",
+    //   subtitle: "WebGL + GSAP Landing Page",
+    //   year: "2024",
+    //   role: "Frontend Engineer",
+    //   description:
+    //     "An experimental 3D-infused landing page blending WebGL scenes with traditional DOM content and scroll-synced animation.",
+    //   features: [
+    //     "WebGL hero scene",
+    //     "Scroll-locked camera motion",
+    //     "GPU-optimized shaders",
+    //     "Fallback for low-end devices"
+    //   ],
+    //   stack: ["React", "Three.js", "GSAP"],
+    //   link: null,
+    //   github: "https://github.com/miikkuu",
+    //   featured: false
+    // }
   ],
 
   education: [
