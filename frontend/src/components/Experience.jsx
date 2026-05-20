@@ -8,29 +8,29 @@ export default function Experience({ data, isDarkMode }) {
   const cardRefs = useRef([]);
 
   useEffect(() => {
-    // Hover animation for experience cards
-    cardRefs.current.forEach((card) => {
-      if (!card) return;
+    const cards = cardRefs.current.filter(Boolean);
 
-      card.addEventListener("mouseenter", () => {
+    const cleanupEntries = cards.map((card) => {
+      const handleMouseEnter = () => {
         gsap.to(card, {
           y: -8,
-          boxShadow: isDarkMode ? "0 20px 40px rgba(255, 255, 255, 0.08)" : "0 20px 40px rgba(0, 0, 0, 0.08)",
+          boxShadow: isDarkMode
+            ? "0 20px 40px rgba(255, 255, 255, 0.08)"
+            : "0 20px 40px rgba(0, 0, 0, 0.08)",
           duration: 0.3,
           ease: "power2.out",
         });
 
-        // Animate stack badges on hover
-        const badges = card.querySelectorAll('[data-badge]');
+        const badges = card.querySelectorAll("[data-badge]");
         gsap.to(badges, {
           scale: 1.05,
           duration: 0.3,
           stagger: 0.05,
           ease: "back.out(1.2)",
         });
-      });
+      };
 
-      card.addEventListener("mouseleave", () => {
+      const handleMouseLeave = () => {
         gsap.to(card, {
           y: 0,
           boxShadow: "none",
@@ -38,20 +38,24 @@ export default function Experience({ data, isDarkMode }) {
           ease: "power2.out",
         });
 
-        const badges = card.querySelectorAll('[data-badge]');
+        const badges = card.querySelectorAll("[data-badge]");
         gsap.to(badges, {
           scale: 1,
           duration: 0.3,
           ease: "power2.out",
         });
-      });
+      };
+
+      card.addEventListener("mouseenter", handleMouseEnter);
+      card.addEventListener("mouseleave", handleMouseLeave);
+
+      return { card, handleMouseEnter, handleMouseLeave };
     });
 
     return () => {
-      cardRefs.current.forEach((card) => {
-        if (!card) return;
-        card.removeEventListener("mouseenter", null);
-        card.removeEventListener("mouseleave", null);
+      cleanupEntries.forEach(({ card, handleMouseEnter, handleMouseLeave }) => {
+        card.removeEventListener("mouseenter", handleMouseEnter);
+        card.removeEventListener("mouseleave", handleMouseLeave);
       });
     };
   }, [isDarkMode]);
